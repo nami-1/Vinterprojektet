@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "AB5qt4QWsk45ivMM56h/TdcbNp6o14znMQxJ+QRj+hf4p74+PX28k2Yn97024doiyf5pL4biXOKs6hlMTjVcEQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\namith.muttharamar1\\Documents\\Programmering\\Vinterprojektet\\Vinterprojektet\\Vinterprojektet\\Vinterprojektet.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\namith.muttharamar1\\.nuget\\packages\\raylib-cs\\4.2.0.1\\raylib-cs.4.2.0.1.nupkg.sha512",
+    "C:\\Users\\namith.muttharamar1\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}

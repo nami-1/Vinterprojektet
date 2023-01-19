@@ -1,0 +1,95 @@
+using Raylib_cs;
+// ctrl *
+
+Raylib.InitWindow(800, 600, "My Game");
+Raylib.SetTargetFPS(60);
+
+
+
+
+Texture2D avatarImage = Raylib.LoadTexture("avatar6.png");
+Texture2D background = Raylib.LoadTexture("lolo.png");
+
+Rectangle playerRect = new Rectangle(0, 0, avatarImage.width, avatarImage.height);
+Rectangle trapRect = new Rectangle(700, 500, 64, 64);
+
+float speed = 5;
+
+string currentScene = "start"; // start, game, end
+
+while (Raylib.WindowShouldClose() == false)
+{
+    //logik
+    if (currentScene == "game") { 
+
+    if (Raylib.IsKeyDown(KeyboardKey.KEY_D))
+    {
+
+        playerRect.x += speed;
+    }
+
+    else if (Raylib.IsKeyDown(KeyboardKey.KEY_A))
+    {
+        playerRect.x -= speed;
+    }
+
+    if (Raylib.IsKeyDown(KeyboardKey.KEY_W))
+    {
+        playerRect.y -= speed;
+    }
+
+    else if (Raylib.IsKeyDown(KeyboardKey.KEY_S))
+    {
+        playerRect.y += speed;
+    }
+
+    if (Raylib.CheckCollisionRecs (playerRect, trapRect)) {
+        currentScene = "end";
+    }
+    }
+
+    // if (playerRect.x == 720) {
+     //currentScene = "end";
+    //}
+    if (currentScene == "end") {
+        if (Raylib.IsKeyDown(KeyboardKey.KEY_ENTER)) {
+            currentScene = "start";
+            playerRect.x = 0;
+        }
+
+    }
+    
+    else if (currentScene == "start") {
+        if (Raylib.IsKeyDown(KeyboardKey.KEY_ENTER)) {
+            currentScene = "game";
+        }
+    }
+
+ 
+
+
+
+    //grafik
+    Raylib.BeginDrawing();
+    Raylib.ClearBackground(Color.WHITE);
+
+    if (currentScene == "game"){
+    Raylib.DrawTexture(background, 0, 0, Color.WHITE);
+
+    Raylib.DrawTexture(avatarImage,
+     (int)playerRect.x,
+     (int)playerRect.y,
+     Color.WHITE);
+
+     Raylib.DrawRectangleRec(trapRect, Color.RED);
+    }
+     
+     else if (currentScene == "start") {
+        Raylib.DrawText("Press ENTER to start", 195, 260, 50, Color.BLACK);
+     }
+
+     else if (currentScene == "end"){
+        Raylib.DrawText("GAME OVER PRESS ENTER TO PLAY AGAIN", 95, 260, 25, Color.BLACK );
+     }
+    Raylib.EndDrawing();
+} 
